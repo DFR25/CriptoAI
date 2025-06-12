@@ -3,95 +3,64 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CriptoAI Noticias - Últimas de Cripto y AI</title>
-  <meta name="description" content="Noticias y análisis actualizados de criptomonedas y tecnología AI.">
+  <title>CriptoAI Noticias Automáticas</title>
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      background: #121212;
-      color: #f0f0f0;
-    }
-    header {
-      background: #222;
+      background-color: #111;
+      color: white;
+      font-family: Arial, sans-serif;
       padding: 20px;
-      text-align: center;
-      font-weight: bold;
-      font-size: 1.6rem;
-      letter-spacing: 1px;
     }
-    main {
-      max-width: 900px;
-      margin: 30px auto;
-      padding: 0 15px;
-    }
-    article {
-      background: #1e1e1e;
-      margin-bottom: 20px;
-      padding: 15px;
-      border-radius: 8px;
-      transition: background 0.3s;
-    }
-    article:hover {
-      background: #333;
-    }
-    h2 {
-      margin-top: 0;
+    h1 {
       color: #1DB954;
+    }
+    .news-item {
+      background: #222;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 8px;
     }
     a {
       color: #1DB954;
       text-decoration: none;
     }
-    a:hover {
-      text-decoration: underline;
-    }
-    .ad-space {
-      background: #333;
-      color: #bbb;
-      text-align: center;
-      padding: 25px 10px;
-      margin: 30px 0;
-      border-radius: 8px;
-      font-style: italic;
-    }
-    footer {
-      text-align: center;
-      margin: 50px 0 20px 0;
-      font-size: 0.9rem;
-      color: #666;
-    }
   </style>
 </head>
 <body>
-  <header>CriptoAI Noticias</header>
-  <main>
-    <section id="news">
-      <article>
-        <h2><a href="https://www.coindesk.com/markets/2025/06/12/bitcoin-surges-past-35000/" target="_blank" rel="noopener noreferrer">Bitcoin supera los $35,000 impulsado por nuevas regulaciones favorables</a></h2>
-        <p>El mercado de criptomonedas ha mostrado una fuerte recuperación gracias a las nuevas políticas regulatorias que favorecen la adopción institucional...</p>
-      </article>
+  <h1>📰 Últimas Noticias Cripto (en vivo)</h1>
+  <div id="news-container">
+    <p>Cargando noticias...</p>
+  </div>
 
-      <article>
-        <h2><a href="https://www.cointelegraph.com/news/ethereum-merge-next-phase" target="_blank" rel="noopener noreferrer">Ethereum avanza a la siguiente fase tras exitoso Merge</a></h2>
-        <p>La actualización de Ethereum conocida como “Merge” ha completado con éxito, abriendo paso a mejoras significativas en escalabilidad y consumo energético...</p>
-      </article>
-    </section>
+  <script>
+    async function obtenerNoticias() {
+      const contenedor = document.getElementById("news-container");
+      contenedor.innerHTML = "Cargando noticias...";
 
-    <div class="ad-space">
-      Espacio para anuncio Google AdSense
-    </div>
+      try {
+        const res = await fetch("https://cryptopanic.com/api/v1/posts/?auth_token=demo&public=true");
+        const data = await res.json();
 
-    <section>
-      <h2>Ofertas de afiliados recomendadas</h2>
-      <ul>
-        <li><a href="https://www.binance.com/en/register?ref=YOUR_REF_CODE" target="_blank" rel="noopener noreferrer">Regístrate en Binance y gana comisiones</a></li>
-        <li><a href="https://www.coinbase.com/join/yourrefcode" target="_blank" rel="noopener noreferrer">Empieza a comprar criptomonedas en Coinbase</a></li>
-      </ul>
-    </section>
-  </main>
-  <footer>
-    &copy; 2025 CriptoAI Noticias. Todos los derechos reservados.
-  </footer>
+        const noticias = data.results.slice(0, 5); // las 5 primeras
+        contenedor.innerHTML = "";
+
+        noticias.forEach(noticia => {
+          const div = document.createElement("div");
+          div.className = "news-item";
+          div.innerHTML = `
+            <h2><a href="${noticia.url}" target="_blank">${noticia.title}</a></h2>
+            <p>${new Date(noticia.published_at).toLocaleString()}</p>
+          `;
+          contenedor.appendChild(div);
+        });
+
+      } catch (error) {
+        contenedor.innerHTML = "No se pudieron cargar las noticias.";
+        console.error(error);
+      }
+    }
+
+    obtenerNoticias();
+  </script>
 </body>
 </html>
