@@ -41,7 +41,7 @@
         const res = await fetch("https://cryptopanic.com/api/v1/posts/?auth_token=demo&public=true");
         const data = await res.json();
 
-        const noticias = data.results.slice(0, 5); // las 5 primeras
+        const noticias = data.results.slice(0, 5);
         contenedor.innerHTML = "";
 
         noticias.forEach(noticia => {
