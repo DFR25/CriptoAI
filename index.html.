@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CriptoAI Noticias - Últimas de Cripto y AI</title>
+  <meta name="description" content="Noticias y análisis actualizados de criptomonedas y tecnología AI.">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background: #121212;
+      color: #f0f0f0;
+    }
+    header {
+      background: #222;
+      padding: 20px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.6rem;
+      letter-spacing: 1px;
+    }
+    main {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 0 15px;
+    }
+    article {
+      background: #1e1e1e;
+      margin-bottom: 20px;
+      padding: 15px;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+    article:hover {
+      background: #333;
+    }
+    h2 {
+      margin-top: 0;
+      color: #1DB954; /* verde cripto */
+    }
+    a {
+      color: #1DB954;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .ad-space {
+      background: #333;
+      color: #bbb;
+      text-align: center;
+      padding: 25px 10px;
+      margin: 30px 0;
+      border-radius: 8px;
+      font-style: italic;
+    }
+    footer {
+      text-align: center;
+      margin: 50px 0 20px 0;
+      font-size: 0.9rem;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <header>CriptoAI Noticias</header>
+  <main>
+    <section id="news">
+      <article>
+        <h2><a href="https://www.coindesk.com/markets/2025/06/12/bitcoin-surges-past-35000/" target="_blank" rel="noopener noreferrer">Bitcoin supera los $35,000 impulsado por nuevas regulaciones favorables</a></h2>
+        <p>El mercado de criptomonedas ha mostrado una fuerte recuperación gracias a las nuevas políticas regulatorias que favorecen la adopción institucional...</p>
+      </article>
+
+      <article>
+        <h2><a href="https://www.cointelegraph.com/news/ethereum-merge-next-phase" target="_blank" rel="noopener noreferrer">Ethereum avanza a la siguiente fase tras exitoso Merge</a></h2>
+        <p>La actualización de Ethereum conocida como “Merge” ha completado con éxito, abriendo paso a mejoras significativas en escalabilidad y consumo energético...</p>
+      </article>
+    </section>
+
+    <div class="ad-space">
+      <!-- Aquí coloca tu código de Google AdSense o anuncio afiliado -->
+      Espacio para anuncio Google AdSense
+    </div>
+
+    <section>
+      <h2>Ofertas de afiliados recomendadas</h2>
+      <ul>
+        <li><a href="https://www.binance.com/en/register?ref=YOUR_REF_CODE" target="_blank" rel="noopener noreferrer">Regístrate en Binance y gana comisiones</a></li>
+        <li><a href="https://www.coinbase.com/join/yourrefcode" target="_blank" rel="noopener noreferrer">Empieza a comprar criptomonedas en Coinbase</a></li>
+      </ul>
+    </section>
+  </main>
+  <footer>
+    &copy; 2025 CriptoAI Noticias. Todos los derechos reservados.
+  </footer>
+</body>
+</html>
