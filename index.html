@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Noticias CriptoAI Automáticas RSS - MultiFuente</title>
+  <title>Noticias CriptoAI Automáticas RSS - Actualización 30s</title>
   <style>
     body {
       background-color: #121212;
@@ -31,42 +31,25 @@
     a:hover {
       text-decoration: underline;
     }
-    .afiliado {
-      margin-top: 40px;
-      padding: 20px;
-      background: #111;
-      border-radius: 8px;
-      text-align: center;
-      font-size: 18px;
-      font-weight: bold;
-      color: #fcd535;
-    }
   </style>
   <!-- PropellerAds publicidad automática -->
   <script data-cfasync="false" async type="text/javascript"
     src="https://push.propellerads.com/v2/pu.js?pubId=pub_ac71fe4c5cd14d0ab133c833f3721fd8"></script>
 </head>
 <body>
-  <h1>📰 Noticias Cripto & IA Automáticas</h1>
+  <h1>📰 Noticias Cripto & IA Automáticas Actualizadas</h1>
   <div id="news-container">
     <p>Cargando noticias...</p>
-  </div>
-
-  <div class="afiliado">
-    💸 ¿Quieres empezar a invertir en Cripto?  
-    <br />
-    👉 <a href="https://accounts.binance.com/es/register?ref=ID-DE-EJEMPLO" target="_blank" rel="noopener noreferrer">Regístrate en Binance con descuento</a>
   </div>
 
   <script>
     const rssFeeds = [
       'https://es.cointelegraph.com/rss',
-      'https://cryptopotato.com/feed/',            // Inglés, puedes cambiar por español si quieres
-      'https://www.coindesk.com/arc/outboundfeeds/rss/', // Inglés, puedes eliminar o cambiar
-      'https://www.analyticsvidhya.com/blog/feed/', // IA en inglés
-      'https://venturebeat.com/category/ai/feed/',  // AI noticias inglés
-      'https://feeds.feedburner.com/ElBitcoinEsp',  // Si existe, puedes reemplazar con otro feed español
-      // Puedes agregar más feeds aquí
+      'https://cryptopotato.com/feed/',
+      'https://www.coindesk.com/arc/outboundfeeds/rss/',
+      'https://www.analyticsvidhya.com/blog/feed/',
+      'https://venturebeat.com/category/ai/feed/',
+      'https://feeds.feedburner.com/ElBitcoinEsp'
     ];
 
     async function fetchRSS(url) {
@@ -92,10 +75,8 @@
           }
         }
 
-        // Ordena todas las noticias por fecha (más recientes primero)
         allItems.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
 
-        // Quita duplicados por título (opcional)
         const seenTitles = new Set();
         const filteredItems = [];
         for (const item of allItems) {
@@ -105,7 +86,6 @@
           }
         }
 
-        // Limita a 15 noticias
         const noticias = filteredItems.slice(0, 15);
 
         contenedor.innerHTML = "";
@@ -127,6 +107,9 @@
     }
 
     cargarNoticias();
+
+    // Actualiza las noticias cada 30 segundos (30000 ms)
+    setInterval(cargarNoticias, 30000);
   </script>
 </body>
 </html>
