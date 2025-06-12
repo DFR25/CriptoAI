@@ -1,21 +1,25 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CriptoAI Noticias Automáticas</title>
+  <title>Noticias CriptoAI</title>
+  <meta name="description" content="Noticias automáticas sobre criptomonedas e inteligencia artificial en español.">
   <style>
     body {
-      background-color: #111;
+      background-color: #0d0d0d;
       color: white;
       font-family: Arial, sans-serif;
       padding: 20px;
+      max-width: 800px;
+      margin: auto;
     }
     h1 {
       color: #1DB954;
+      text-align: center;
     }
     .news-item {
-      background: #222;
+      background: #1a1a1a;
       padding: 15px;
       margin: 10px 0;
       border-radius: 8px;
@@ -24,32 +28,54 @@
       color: #1DB954;
       text-decoration: none;
     }
+    .afiliado {
+      margin-top: 30px;
+      padding: 20px;
+      background: #111;
+      border-radius: 8px;
+      text-align: center;
+    }
+    .afiliado a {
+      color: #fcd535;
+      font-weight: bold;
+      font-size: 18px;
+    }
   </style>
+  <!-- PropellerAds publicidad automática -->
+  <script data-cfasync="false" async type="text/javascript"
+    src="https://push.propellerads.com/v2/pu.js?pubId=pub_ac71fe4c5cd14d0ab133c833f3721fd8"></script>
 </head>
 <body>
-  <h1>📰 Últimas Noticias Cripto (en vivo)</h1>
+  <h1>📰 Noticias Cripto e IA (Automáticas)</h1>
   <div id="news-container">
     <p>Cargando noticias...</p>
   </div>
 
+  <div class="afiliado">
+    💸 ¿Quieres empezar a invertir en Cripto?  
+    <br>
+    👉 <a href="https://accounts.binance.com/es/register?ref=ID-DE-EJEMPLO" target="_blank">Regístrate en Binance con descuento</a>
+  </div>
+
   <script>
-    async function obtenerNoticias() {
+    async function cargarNoticias() {
       const contenedor = document.getElementById("news-container");
       contenedor.innerHTML = "Cargando noticias...";
 
       try {
-        const res = await fetch("https://cryptopanic.com/api/v1/posts/?auth_token=demo&public=true");
+        const res = await fetch("https://newsdata.io/api/1/news?apikey=pub_ac71fe4c5cd14d0ab133c833f3721fd8&language=es&q=criptomonedas,inteligencia+artificial&category=technology");
         const data = await res.json();
 
-        const noticias = data.results.slice(0, 5);
+        const noticias = data.results.slice(0, 6);
         contenedor.innerHTML = "";
 
         noticias.forEach(noticia => {
           const div = document.createElement("div");
           div.className = "news-item";
           div.innerHTML = `
-            <h2><a href="${noticia.url}" target="_blank">${noticia.title}</a></h2>
-            <p>${new Date(noticia.published_at).toLocaleString()}</p>
+            <h2><a href="${noticia.link}" target="_blank">${noticia.title}</a></h2>
+            <p>${new Date(noticia.pubDate).toLocaleString()}</p>
+            <p>${noticia.description || ''}</p>
           `;
           contenedor.appendChild(div);
         });
@@ -60,7 +86,7 @@
       }
     }
 
-    obtenerNoticias();
+    cargarNoticias();
   </script>
 </body>
 </html>
